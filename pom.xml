@@ -28,14 +28,14 @@
 					<cloudHubDeployment>
 				      <uri>https://anypoint.mulesoft.com/</uri>
 				      <muleVersion>4.2.2</muleVersion>
-				      <username>${username}</username>
-				      <password>${password}</password>
+				      <username>vij22</username>
+				      <password>Sunny123#</password>
 				      <applicationName>test3436</applicationName>
 				      <environment>Sandbox</environment>
 				      <workers>1</workers>
 				      <workerType>Micro</workerType>
 				      <objectStoreV2>true</objectStoreV2>
-				      <server>any-maven</server>				      
+				      			      
   				</cloudHubDeployment>
 				</configuration>
 			</plugin>
