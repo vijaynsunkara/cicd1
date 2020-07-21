@@ -98,7 +98,7 @@ output application/json
         </error-handler>
     </flow>
     <flow name="get:\employees:employee-config">
-        <logger level="INFO" doc:name="Logger" doc:id="6ca9282c-8de3-4693-adfb-e1902fd08584" message="start of the flow employee"/>
+        <logger level="INFO" doc:name="Logger" doc:id="6ca9282c-8de3-4693-adfb-e1902fd08584" message="start of the flow employee started"/>
 		<ee:transform xmlns:ee="http://www.mulesoft.org/schema/mule/ee/core" xsi:schemaLocation="http://www.mulesoft.org/schema/mule/ee/core http://www.mulesoft.org/schema/mule/ee/core/current/mule-ee.xsd">
             <ee:message>
                 <ee:set-payload><![CDATA[%dw 2.0
