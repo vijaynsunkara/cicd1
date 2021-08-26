@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<settings xsi:schemaLocation="http://maven.apache.org/SETTINGS/1.1.0 http://maven.apache.org/xsd/settings-1.1.0.xsd" xmlns="http://maven.apache.org/SETTINGS/1.1.0"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+	
+<pluginGroups>
+	<pluginGroup>org.mule.tools</pluginGroup>
+	<pluginGroup>org.sonarsource.scanner.maven</pluginGroup>
+</pluginGroups>
+
+
+  <servers>
+    <server>
+      <username>vijay</username>
+      <password>May@2021</password>
+      <id>snapshots</id>
+    </server>
+    <server>
+      <username>vijay</username>
+      <password>May@2021</password>
+      <id>releases</id>
+    </server>
+	<server>
+        <username>gitlab-ci-user</username>
+        <password>{bLW4N6XLI/cHm+zQsMHxwc3hvDi3fKnG7UKo3+sgdBFYCWnqphfV+EfjvMXhIlwa}</password>
+        <id>cloudhub</id>
+    </server>
+    <server>
+        <id>git</id>
+				<username>gitlab-ci-user</username>
+        <password>{qxB2mz3BPFIHfkJZwOQJquR2Y5Lyudb1TMmS4ShdgOFgHweES2v13d9nj7bgVuLU}</password>
+		</server>
+  </servers>
+  <profiles>
+    <profile>
+      <repositories>
+        <repository>
+          <snapshots>
+            <enabled>false</enabled>
+          </snapshots>
+          <id>mulesoft</id>
+          <name>libs-mulesoft</name>
+          <url>https://action.jfrog.io/action/libs-mulesoft</url>
+        </repository>
+      </repositories>
+      <pluginRepositories>
+          <pluginRepository>
+              <snapshots>
+                  <enabled>false</enabled>
+              </snapshots>
+              <id>mulesoft</id>
+              <name>libs-mulesoft</name>
+              <url>https://action.jfrog.io/action/libs-mulesoft</url>
+          </pluginRepository>
+      </pluginRepositories>
+      <id>artifactory</id>
+    </profile>
+	<profile>
+		<id>sonar</id>
+		<activation>
+			<activeByDefault>true</activeByDefault>
+		</activation>
+			<properties>
+				<sonar.host.url>http://localhost:9000</sonar.host.url>
+			</properties>
+			<repositories>
+     <repository>
+        <id>MuleRepository</id>
+        <name>Exchange Repository</name>
+        <url>https://maven.anypoint.mulesoft.com/api/v2/bfae7dce-a434-45dc-8404-fb5f48e0a977/maven</url>
+        <layout>default</layout>
+       </repository>
+        </repositories>
+	</profile>
+  </profiles>
+  <activeProfiles>
+    <activeProfile>artifactory</activeProfile>
+  </activeProfiles>
+</settings>
