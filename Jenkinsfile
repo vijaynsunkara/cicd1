@@ -19,7 +19,7 @@ ANYPOINT_CREDENTIALS = credentials('anypointPlatform')
 steps {
 echo 'Deploying mule project due to the latest code commit…'
 echo 'Deploying to the configured environment….'
-bat 'mvn package deploy -DmuleDeploy -Dusername="vijaynaidu24" -Dpassword="Sunny123#" -DworkerType=Micro -Dworkers=1 -Dregion=us-west-2'
+bat 'mvn package deploy -DmuleDeploy -Dusername="vijaynaidu24" -Dpassword="Sunny123#" -DworkerType=Micro -Dworkers=1'
 }
 }
 }
