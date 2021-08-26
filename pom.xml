@@ -132,17 +132,5 @@
 			</snapshots>
 		</pluginRepository>
 	</pluginRepositories>
-	<distributionManagement>
-		<repository>
-			<id>releases</id>
-			<name>libs-release</name>
-			<url>https://action.jfrog.io/artifactory/libs-release/</url>
-		</repository>
-		<snapshotRepository>
-			<id>snapshots</id>
-			<name>libs-snapshot</name>
-			<url>https://action.jfrog.io/artifactory/libs-snapshot</url>
-		</snapshotRepository>
-
-	</distributionManagement>
+	
 </project>
