@@ -9,8 +9,8 @@
 		http://www.mulesoft.org/schema/mule/munit-tools  http://www.mulesoft.org/schema/mule/munit-tools/current/mule-munit-tools.xsd">
 	<munit:config name="employee-suite.xml" />
 	<munit:test name="employee-main-test" doc:id="dbad6921-a8fd-4098-bb19-063f8c65dab8" >
-		<munit:behavior >
-			<munit:set-event doc:name="Set Input" doc:id="09a02b88-65cb-4547-8a02-3e694d650e30" >
+		<munit:behavior>
+			<munit:set-event doc:name="Set Input" doc:id="09a02b88-65cb-4547-8a02-3e694d650e30">
 				<munit:payload value="#[output text/csv --- readUrl('classpath://employeemaintest\set-event_payload1.dwl')]" encoding="UTF-8" mediaType="text/csv" />
 				<munit:attributes value="#[readUrl('classpath://employeemaintest\set-event_attributes1.dwl')]" />
 			</munit:set-event>
@@ -28,5 +28,94 @@ assert_expression_payload1::main({payload: payload, attributes: attributes, vars
 		</munit:validation>
 	</munit:test>
 
+<munit:test name="employee-main-apikit" doc:id="65d4c7f4-2539-4fdf-bbf8-3a2e7211a433" >
+		<munit:behavior>
+			<munit-tools:mock-when doc:name="Mock when" doc:id="ecdcc577-ff22-488b-9013-7cfb25298f66" processor="apikit:router">
+				<munit-tools:with-attributes >
+					<munit-tools:with-attribute whereValue="employee-config" attributeName="config-ref" />
+				</munit-tools:with-attributes>
+			</munit-tools:mock-when>
+		</munit:behavior>
+		<munit:execution >
+			<flow-ref doc:name="Flow-ref to employee-main" doc:id="af964640-d46d-4f85-8970-7ae1927b10ea" name="employee-main"/>
+		</munit:execution>
+	</munit:test>
+
+<munit:test name="employee-main-APIKIT:BAD_REQUEST" doc:id="2a18bbb8-dfc3-4c84-a4f0-2bf4a1e9909d" expectedErrorType="APIKIT:BAD_REQUEST">
+		<munit:behavior>
+			<munit-tools:mock-when doc:name="Mock when" doc:id="6899ce73-923f-49fb-a580-b8e8a354df08" processor="apikit:router">
+				<munit-tools:with-attributes >
+					<munit-tools:with-attribute whereValue="employee-config" attributeName="config-ref" />
+				</munit-tools:with-attributes>
+				<munit-tools:then-return >
+					<munit-tools:error typeId="APIKIT:BAD_REQUEST" />
+				</munit-tools:then-return>
+			</munit-tools:mock-when>
+		</munit:behavior>
+		<munit:execution >
+			<flow-ref doc:name="Flow-ref to employee-main" doc:id="c4d22882-d888-489f-8393-a76ed97fe01e" name="employee-main"/>
+		</munit:execution>
+	</munit:test>
+<munit:test name="employee-main-APIKIT:NOT_FOUND" doc:id="885dc933-ed5d-467a-bee4-22b1206c48bb" expectedErrorType="APIKIT:NOT_FOUND">
+		<munit:behavior>
+			<munit-tools:mock-when doc:name="Mock when" doc:id="08c862cb-2b89-4328-89f8-7091a9a7edcd" processor="apikit:router">
+				<munit-tools:with-attributes >
+					<munit-tools:with-attribute whereValue="employee-config" attributeName="config-ref" />
+				</munit-tools:with-attributes>
+				<munit-tools:then-return >
+					<munit-tools:error typeId="APIKIT:NOT_FOUND" />
+				</munit-tools:then-return>
+			</munit-tools:mock-when>
+		</munit:behavior>
+		<munit:execution >
+			<flow-ref doc:name="Flow-ref to employee-main" doc:id="a740bc1d-de71-4675-a9a8-c7138c219593" name="employee-main"/>
+		</munit:execution>
+	</munit:test>
+<munit:test name="employee-main-APIKIT:METHOD_NOT_ALLOWED" doc:id="159e0887-96d6-45bd-8d16-168b907e1171" expectedErrorType="APIKIT:METHOD_NOT_ALLOWED">
+		<munit:behavior>
+			<munit-tools:mock-when doc:name="Mock when" doc:id="4f45b244-39aa-4ccd-a412-383c6032b07f" processor="apikit:router">
+				<munit-tools:with-attributes >
+					<munit-tools:with-attribute whereValue="employee-config" attributeName="config-ref" />
+				</munit-tools:with-attributes>
+				<munit-tools:then-return >
+					<munit-tools:error typeId="APIKIT:METHOD_NOT_ALLOWED" />
+				</munit-tools:then-return>
+			</munit-tools:mock-when>
+		</munit:behavior>
+		<munit:execution >
+			<flow-ref doc:name="Flow-ref to employee-main" doc:id="59388e78-96f1-4199-aa94-5ac43180807b" name="employee-main"/>
+		</munit:execution>
+	</munit:test>
+<munit:test name="employee-main-APIKIT:NOT_ACCEPTABLE" doc:id="da965eb1-22b9-435e-bf84-a52ed6110ea0" expectedErrorType="APIKIT:NOT_ACCEPTABLE">
+		<munit:behavior>
+			<munit-tools:mock-when doc:name="Mock when" doc:id="5024d8d1-e1a2-4eb3-a270-09687d53c12d" processor="apikit:router">
+				<munit-tools:with-attributes >
+					<munit-tools:with-attribute whereValue="employee-config" attributeName="config-ref" />
+				</munit-tools:with-attributes>
+				<munit-tools:then-return >
+					<munit-tools:error typeId="APIKIT:NOT_ACCEPTABLE" />
+				</munit-tools:then-return>
+			</munit-tools:mock-when>
+		</munit:behavior>
+		<munit:execution >
+			<flow-ref doc:name="Flow-ref to employee-main" doc:id="6721263b-b7bc-44a1-9f42-9e4c95c60473" name="employee-main"/>
+		</munit:execution>
+	</munit:test>
+
+<munit:test name="employee-main-APIKIT:UNSUPPORTED_MEDIA_TYPE" doc:id="52f8309b-446a-40d6-aac7-5d56f4b2f9dc" expectedErrorType="APIKIT:UNSUPPORTED_MEDIA_TYPE">
+		<munit:behavior>
+			<munit-tools:mock-when doc:name="Mock when" doc:id="ddd58021-04f3-4ba6-bc1a-57143bf1c637" processor="apikit:router">
+				<munit-tools:with-attributes >
+					<munit-tools:with-attribute whereValue="employee-config" attributeName="config-ref" />
+				</munit-tools:with-attributes>
+				<munit-tools:then-return >
+					<munit-tools:error typeId="APIKIT:UNSUPPORTED_MEDIA_TYPE" />
+				</munit-tools:then-return>
+			</munit-tools:mock-when>
+		</munit:behavior>
+		<munit:execution >
+			<flow-ref doc:name="Flow-ref to employee-main" doc:id="10314cfa-3fcd-4eac-802e-1047fa89becf" name="employee-main"/>
+		</munit:execution>
+	</munit:test>
 
 </mule>
