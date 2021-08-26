@@ -3,7 +3,7 @@ pipeline {
   agent any
   environment {
     //adding a comment for the commit test
-    DEPLOY_CREDS = credentials('vijaysun24')
+    DEPLOY_CREDS = credentials('vijaynaidu24')
     MULE_VERSION = '4.3.0'
     BG = "vijay sun"
     WORKER = "Micro"
@@ -36,7 +36,7 @@ pipeline {
         APP_NAME = 'employee-test-api-prod'
       }
       steps {
-            bat 'mvn -U -V -e -B -DskipTests deploy -DmuleDeploy -Dmule.version="%MULE_VERSION%" -Danypoint.username="vijaynaidu22" -Danypoint.password="Sunny123#" -Dcloudhub.app="%APP_NAME%" -Dcloudhub.environment="%ENVIRONMENT%" -Dcloudhub.bg="%BG%" -Dcloudhub.worker="%WORKER%"'
+            bat 'mvn -U -V -e -B -DskipTests deploy -DmuleDeploy -Dmule.version="%MULE_VERSION%" -Danypoint.username="vijaynaidu24" -Danypoint.password="Sunny123#" -Dcloudhub.app="%APP_NAME%" -Dcloudhub.environment="%ENVIRONMENT%" -Dcloudhub.bg="%BG%" -Dcloudhub.worker="%WORKER%"'
       }
     }
   }
