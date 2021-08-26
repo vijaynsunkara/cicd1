@@ -14,9 +14,8 @@ bat 'mvn test'
 }
 stage('Deploy CloudHub') {
 environment {
-        ENVIRONMENT = 'Sandbox'
-        APP_NAME = 'employee-test-api-prod'
-      }
+       ANYPOINT_CREDENTIALS = credentials('anypointPlatform')
+}
 steps {
 echo 'Deploying mule project due to the latest code commit…'
 echo 'Deploying to the configured environment….'
