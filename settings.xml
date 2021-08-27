@@ -7,7 +7,7 @@
 	<pluginGroup>org.sonarsource.scanner.maven</pluginGroup>
 </pluginGroups>
 
-
+#servers
   <servers>
     <server>
       <username>vijay</username>
