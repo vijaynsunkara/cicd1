@@ -51,6 +51,10 @@
               <name>libs-mulesoft</name>
               <url>https://action.jfrog.io/action/libs-mulesoft</url>
           </pluginRepository>
+	      <pluginRepository>
+			<id>mule-public</id>
+			<url>https://repository.mulesoft.org/nexus/content/repositories/releases</url>
+    		</pluginRepository>
       </pluginRepositories>
       <id>artifactory</id>
     </profile>
